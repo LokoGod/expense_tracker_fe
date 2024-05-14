@@ -21,6 +21,7 @@ import { Input } from "@/components/ui/input"
 
 import { DollarSign } from "lucide-react";
 import { AddRecordForm } from "@/components/forms/AddRecordForm";
+import ExpenseRecords from "@/components/fetchData/ExpenseRecords";
 
 export default function Home() {
   return (
@@ -30,7 +31,7 @@ export default function Home() {
           <DialogTrigger asChild>
             <Button>Add Record</Button>
           </DialogTrigger>
-          <DialogContent className=" md: w-full">
+          <DialogContent className=" md:w-full">
             <DialogHeader>
               <DialogTitle>Record an expense</DialogTitle>
             </DialogHeader>
@@ -39,6 +40,10 @@ export default function Home() {
 
           </DialogContent>
         </Dialog>
+      </div>
+
+      <div className="flex justify-center mt-5">
+      <ExpenseRecords />
       </div>
     </main>
   );
