@@ -30,7 +30,7 @@ export default function Home() {
           <DialogTrigger asChild>
             <Button>Add Record</Button>
           </DialogTrigger>
-          <DialogContent className=" md: w-auto">
+          <DialogContent className=" md: w-full">
             <DialogHeader>
               <DialogTitle>Add a record</DialogTitle>
             </DialogHeader>
