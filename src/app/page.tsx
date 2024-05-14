@@ -20,6 +20,7 @@ import { Input } from "@/components/ui/input"
 
 
 import { DollarSign } from "lucide-react";
+import { AddRecordForm } from "@/components/forms/AddRecordForm";
 
 export default function Home() {
   return (
@@ -31,14 +32,10 @@ export default function Home() {
           </DialogTrigger>
           <DialogContent className=" md: w-auto">
             <DialogHeader>
-              <DialogTitle>Are you absolutely sure?</DialogTitle>
-              <DialogDescription>
-                This action cannot be undone. This will permanently delete your
-                account and remove your data from our servers.
-              </DialogDescription>
+              <DialogTitle>Add a record</DialogTitle>
             </DialogHeader>
 
-            <Input />
+            <AddRecordForm />
 
           </DialogContent>
         </Dialog>
