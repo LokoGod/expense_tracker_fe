@@ -67,8 +67,19 @@ export function AddRecordForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>, event: any) {
+    event.preventDefault();
+
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/v1/expense",
+        values
+      );
+      toast.success("Record Submit Success");
+    } catch (error) {
+      console.error();
+      toast.error("Cannot submit record at the moment");
+    }
   }
 
   return (
