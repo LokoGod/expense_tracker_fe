@@ -32,7 +32,7 @@ export default function Home() {
           </DialogTrigger>
           <DialogContent className=" md: w-full">
             <DialogHeader>
-              <DialogTitle>Add a record</DialogTitle>
+              <DialogTitle>Record an expense</DialogTitle>
             </DialogHeader>
 
             <AddRecordForm />
