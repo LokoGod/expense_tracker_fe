@@ -13,6 +13,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -40,6 +41,7 @@ export default function RootLayout({
             <Navbar />
             <SideBar />
             <Page_wrapper>{children}</Page_wrapper>
+            <Footer />
           </ThemeProvider>
           </TooltipProvider>
         </Margin_width_wrapper>
