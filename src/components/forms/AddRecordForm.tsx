@@ -35,7 +35,6 @@ const formSchema = z.object({
   Category: z.string({ required_error: "Please select a category" }),
 });
 
-// Define the Category interface
 interface Category {
   ID: number;
   ExpenseCategoryTitle: string;
