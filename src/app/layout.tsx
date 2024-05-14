@@ -14,6 +14,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import Footer from "@/components/Footer";
+import { Toaster, toast } from 'sonner'
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -38,6 +39,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
+            <Toaster richColors  />
             <Navbar />
             <SideBar />
             <Page_wrapper>{children}</Page_wrapper>
