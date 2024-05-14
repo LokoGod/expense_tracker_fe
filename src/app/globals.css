@@ -74,3 +74,14 @@
     @apply bg-background text-foreground;
   }
 }
+
+main {
+  margin-left: 1rem;
+}
+
+/* Mobile view style */
+@media (max-width: 768px) {
+  main {
+    margin-left: 0;
+  }
+}
