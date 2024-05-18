@@ -32,32 +32,32 @@ const formSchema = z.object({
   Amount: z.coerce.number().positive({
     message: "Enter a positive number",
   }),
-  Category: z.string({ required_error: "Please select a category" }),
+  Budget: z.string({ required_error: "Please select a budget" }),
 });
 
-interface Category {
+interface Budget {
   ID: number;
-  ExpenseCategoryTitle: string;
+  BudgetTitle: string;
+  BudgetAmount: number;
 }
 
 export function AddRecordForm() {
-  const [categoryData, setCategoryData] = useState<Category[]>([]);
+  // const [categoryData, setCategoryData] = useState<Category[]>([]);
+  const [budgetData, setBudgetData] = useState<Budget[]>([]);
 
   useEffect(() => {
-    const fetchCategories = async () => {
+    const fetchBudgets = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:5000/api/v1/expenseCategory"
-        );
-        const categories = response.data["All Categories"];
-        setCategoryData(categories);
+        const response = await axios.get("http://localhost:5000/api/v1/budget");
+        const budgets = response.data["All Budgets"];
+        setBudgetData(budgets);
         console.log(response);
       } catch (error) {
         console.error(error);
-        toast.error("Failed to load categories");
+        toast.error("Failed to load budgets");
       }
     };
-    fetchCategories();
+    fetchBudgets();
   }, []);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -125,25 +125,25 @@ export function AddRecordForm() {
               <div className="col-span-2">
                 <FormField
                   control={form.control}
-                  name="Category"
+                  name="Budget"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Category</FormLabel>
+                      <FormLabel>Budget</FormLabel>
                       <FormControl>
                         <Select
                           onValueChange={field.onChange}
                           defaultValue={field.value}
                         >
                           <SelectTrigger className="">
-                            <SelectValue placeholder="Category" />
+                            <SelectValue placeholder="Choose" />
                           </SelectTrigger>
                           <SelectContent>
-                            {categoryData.map((category) => (
+                            {budgetData.map((budget) => (
                               <SelectItem
-                                key={category.ID}
-                                value={category.ExpenseCategoryTitle}
+                                key={budget.ID}
+                                value={budget.BudgetTitle}
                               >
-                                {category.ExpenseCategoryTitle}
+                                {budget.BudgetTitle}
                               </SelectItem>
                             ))}
                           </SelectContent>
