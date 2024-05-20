@@ -1,4 +1,16 @@
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
 import { toast } from "sonner";
+
+import { CreditCard } from "lucide-react";
+import DemoPieChart from "@/components/charts/DemoPieChart";
 
 type Params = {
   params: {
@@ -53,7 +65,7 @@ export default async function page({ params: { ID } }: Params) {
   }
 
   const totalRelatedRecordAmountData = await fetchTotalRelatedRecordAmount();
-  const total = totalRelatedRecordAmountData["Total"];
+  const totalRecordAmount = totalRelatedRecordAmountData["Total"];
 
   const allBudgetRelatedExpenseRecords =
     await fetchAllBudgetRelatedExpenseRecords();
@@ -64,9 +76,47 @@ export default async function page({ params: { ID } }: Params) {
   const budgetRemaining = calculatedBudgetRemaining["Remaining amount"];
 
   return (
-    <div>
-      <h1>This is the total</h1>
-      <h2>{total}</h2>
+    <main className="">
+      <div className="flex justify-evenly">
+        <Card className="w-[300px]">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">
+              Expenses so far...
+            </CardTitle>
+            <CreditCard className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">Rs {totalRecordAmount}</div>
+            <p className="text-xs text-muted-foreground">
+              +19% from last month
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card className="w-[300px]">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">
+              Remaining budget
+            </CardTitle>
+            <CreditCard className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">Rs {budgetRemaining}</div>
+            <p className="text-xs text-muted-foreground">
+              +19% from last month
+            </p>
+          </CardContent>
+        </Card>
+      </div>
+
+      <div className="flex justify-center">
+        <Card>
+        <DemoPieChart />
+        </Card>
+      </div>
+
+      {/* <h1>This is the total</h1>
+      <h2></h2>
 
       <h1>Table thinamaboo</h1>
       {relatedExpenseRecords.map((records: any) => (
@@ -77,7 +127,7 @@ export default async function page({ params: { ID } }: Params) {
         </ul>
       ))}
 
-      <h1>Remaining: {budgetRemaining}</h1>
-    </div>
+      <h1>Remaining: </h1> */}
+    </main>
   );
 }
