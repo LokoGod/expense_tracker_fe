@@ -7,6 +7,8 @@ type Params = {
 };
 
 export default async function page({ params: { ID } }: Params) {
+  console.log("Fetching data for ID:", ID); // Debugging log
+  
   async function fetchTotalRelatedRecordAmount() {
     const response = await fetch(
       `http://localhost:5000/api/v1/totalRelatedRecordAmount/${ID}`,
