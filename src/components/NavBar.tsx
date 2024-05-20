@@ -33,7 +33,7 @@ export default function Navbar() {
             >
               <div className="ml-4 flex-none text-sm font-bold uppercase md:hidden lg:block">
                 {/* {SITE_NAME} */}
-                Site-Name
+                Expense Tracker
               </div>
             </Link>
           </div>
