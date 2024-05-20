@@ -10,7 +10,8 @@ import { Progress } from "@/components/ui/progress";
 import { toast } from "sonner";
 
 import { CreditCard } from "lucide-react";
-import DemoPieChart from "@/components/charts/DemoPieChart";
+import BudgetDetailsPieChart from "@/components/charts/BudgetDetailsPieChart";
+import { Badge } from "@/components/ui/badge";
 
 type Params = {
   params: {
@@ -87,9 +88,9 @@ export default async function page({ params: { ID } }: Params) {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">Rs {totalRecordAmount}</div>
-            <p className="text-xs text-muted-foreground">
-              +19% from last month
-            </p>
+            <div className="text-xs text-muted-foreground">
+            <Badge variant={"customSuccessGreen"}>+20.1%</Badge> from last month
+            </div>
           </CardContent>
         </Card>
 
@@ -102,16 +103,17 @@ export default async function page({ params: { ID } }: Params) {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">Rs {budgetRemaining}</div>
-            <p className="text-xs text-muted-foreground">
-              +19% from last month
-            </p>
+            <div className="text-xs text-muted-foreground">
+             <Badge variant={"destructive"}>+19%</Badge> from last month
+            </div>
           </CardContent>
         </Card>
       </div>
 
       <div className="flex justify-center">
         <Card>
-        <DemoPieChart />
+          {/* passing data variables as props */}
+          <BudgetDetailsPieChart totalRecordAmount={totalRecordAmount} budgetRemaining={budgetRemaining}/>
         </Card>
       </div>
 
