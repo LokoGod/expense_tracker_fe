@@ -53,7 +53,7 @@ export default async function page({ params: { ID } }: Params) {
       {relatedExpenseRecords.map((records: any) => (
         <ul key={records.ID}>
           <li>
-            {records.RelatedBudgetID} || {records.RelatedExpenseID}
+            {records.RelatedBudgetID}|{records.RelatedExpenseID}
           </li>
         </ul>
       ))}
