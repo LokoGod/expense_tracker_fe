@@ -1,5 +1,5 @@
 "use client";
-import { DiamondPlus, SearchIcon, Trash2 } from "lucide-react";
+import { ClipboardPenLine, DiamondPlus, SearchIcon, Trash2, View } from "lucide-react";
 import { Input } from "../ui/input";
 import React, { useState } from "react";
 import { RxDotsVertical } from "react-icons/rx";
@@ -75,11 +75,10 @@ export default function SearchBudgets({ budgets }: any) {
 
       {filteredBudgets.length === 0 ? (
         <>
-        <div className="text-center mb-10">
-          <Badge variant={"destructive"}>No budgets found.</Badge>
-        </div>
+          <div className="text-center mb-10">
+            <Badge variant={"destructive"}>No budgets found.</Badge>
+          </div>
         </>
-        
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {filteredBudgets.map((budget: any) => (
@@ -88,33 +87,41 @@ export default function SearchBudgets({ budgets }: any) {
                 <CardTitle className="flex justify-between items-center md:pt-0 pt-4">
                   <div className="text-lg md:text-xl">
                     {budget.BudgetTitle}{" "}
-                    <Badge variant="accentBlue">Rs {budget.BudgetAmount.toLocaleString()}</Badge>
+                    <Badge variant="accentBlue">
+                      Rs {budget.BudgetAmount.toLocaleString()}
+                    </Badge>
                   </div>
                   <div className="flex items-center">
                     <DropdownMenu>
                       <DropdownMenuTrigger>
                         <RxDotsVertical className="h-4 w-4 ml-2" />
                       </DropdownMenuTrigger>
-                      <DropdownMenuContent>
-                        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                      <DropdownMenuContent className=" w-36">
+                        <DropdownMenuLabel>Budget</DropdownMenuLabel>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem>Profile</DropdownMenuItem>
+                        <DropdownMenuItem asChild>
+                          <Link href={`../budgetDetails/${budget.ID}`}>
+                            <View className="mr-2 h-4 w-4" />
+                            <span>View more</span>
+                          </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuSeparator />
                         <DropdownMenuItem
                           onClick={() => handleDeleteJob(budget.ID)}
                         >
-                          <Trash2 className="mr-5" />
-                          Delete job
+                          <Trash2 className="mr-2 h-4 w-4" />
+                          <span>Delete</span>
                         </DropdownMenuItem>
-                        <DropdownMenuItem>Team</DropdownMenuItem>
-                        <DropdownMenuItem>Subscription</DropdownMenuItem>
+                        <DropdownMenuItem>
+                        <ClipboardPenLine className="mr-2 h-4 w-4"/>
+                        <span>Update</span>
+                        </DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
                   </div>
                 </CardTitle>
 
-                <CardDescription>
-                  {budget.BudgetDetail}
-                </CardDescription>
+                <CardDescription>{budget.BudgetDetail}</CardDescription>
               </CardHeader>
 
               <CardContent className="p-2 pt-0 md:p-4 md:pt-0">
