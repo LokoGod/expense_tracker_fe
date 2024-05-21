@@ -88,7 +88,7 @@ export default function SearchBudgets({ budgets }: any) {
                 <CardTitle className="flex justify-between items-center md:pt-0 pt-4">
                   <div className="text-lg md:text-xl">
                     {budget.BudgetTitle}{" "}
-                    <Badge variant="accentBlue">Rs {budget.BudgetAmount}</Badge>
+                    <Badge variant="accentBlue">Rs {budget.BudgetAmount.toLocaleString()}</Badge>
                   </div>
                   <div className="flex items-center">
                     <DropdownMenu>
@@ -113,8 +113,7 @@ export default function SearchBudgets({ budgets }: any) {
                 </CardTitle>
 
                 <CardDescription>
-                  Unlock all features and get unlimited access to our support
-                  team.
+                  {budget.BudgetDetail}
                 </CardDescription>
               </CardHeader>
 
