@@ -7,9 +7,18 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { toast } from "sonner";
 
-import { CreditCard } from "lucide-react";
+import { CreditCard, PiggyBank, Receipt, Wallet } from "lucide-react";
 import BudgetDetailsPieChart from "@/components/charts/BudgetDetailsPieChart";
 import { Badge } from "@/components/ui/badge";
 
@@ -78,16 +87,16 @@ export default async function page({ params: { ID } }: Params) {
 
   return (
     <main className="">
-      <div className="flex justify-evenly">
+      <div className="flex justify-evenly mb-5">
         <Card className="w-[300px]">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
-              Expenses so far...
+              Total spent
             </CardTitle>
-            <CreditCard className="h-4 w-4 text-muted-foreground" />
+            <Receipt className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">Rs {totalRecordAmount}</div>
+            <div className="text-2xl font-bold">Rs {totalRecordAmount.toLocaleString()}</div>
             <div className="text-xs text-muted-foreground">
             <Badge variant={"customSuccessGreen"}>+20.1%</Badge> from last month
             </div>
@@ -99,10 +108,25 @@ export default async function page({ params: { ID } }: Params) {
             <CardTitle className="text-sm font-medium">
               Remaining budget
             </CardTitle>
-            <CreditCard className="h-4 w-4 text-muted-foreground" />
+            <Wallet className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">Rs {budgetRemaining}</div>
+            <div className="text-2xl font-bold">Rs {budgetRemaining.toLocaleString()}</div>
+            <div className="text-xs text-muted-foreground">
+             <Badge variant={"destructive"}>+19%</Badge> from last month
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="w-[300px]">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">
+              Remaining budget
+            </CardTitle>
+            <Wallet className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">Rs {budgetRemaining.toLocaleString()}</div>
             <div className="text-xs text-muted-foreground">
              <Badge variant={"destructive"}>+19%</Badge> from last month
             </div>
@@ -110,11 +134,36 @@ export default async function page({ params: { ID } }: Params) {
         </Card>
       </div>
 
-      <div className="flex justify-center">
-        <Card>
+      <div className="flex justify-evenly gap-4">
+        <Card className="w-auto">
           {/* passing data variables as props */}
           <BudgetDetailsPieChart totalRecordAmount={totalRecordAmount} budgetRemaining={budgetRemaining}/>
         </Card>
+
+        <Card>
+      <Table className="w-[400px]">
+        <TableCaption>A list of your recent invoices.</TableCaption>
+        <TableHeader>
+          <TableRow>
+            <TableHead className="text-center">Expense</TableHead>
+            <TableHead className="text-center">Cateogory</TableHead>
+            {/* <TableHead className="text-right">Amount (LKR)</TableHead> */}
+          </TableRow>
+        </TableHeader>
+        <TableBody className="text-center">
+          {relatedExpenseRecords.map((record: any) => (
+            <TableRow key={record.ID}>
+              <TableCell className="font-medium">
+                {record.RelatedBudgetID}
+              </TableCell>
+              <TableCell>{record.RelatedExpenseID}</TableCell>
+              {/* <TableCell className="text-right">{record.Amount}</TableCell> */}
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+      </Card>
+
       </div>
 
       {/* <h1>This is the total</h1>

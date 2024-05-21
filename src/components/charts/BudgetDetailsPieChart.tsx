@@ -18,7 +18,7 @@ const BudgetDetailsPieChart: React.FC<DemoPieChartProps> = ({ totalRecordAmount,
 
   return (
     
-      <PieChart width={300} height={350}>
+      <PieChart width={400} height={350}>
         <Pie
           data={data}
           cy={150}
