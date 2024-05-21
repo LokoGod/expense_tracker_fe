@@ -12,6 +12,14 @@ import {
   CardContent,
 } from "../ui/card";
 import { Badge } from "../ui/badge";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import Link from "next/link";
 
 export default function SearchBudgets({ budgets }: any) {
@@ -23,11 +31,11 @@ export default function SearchBudgets({ budgets }: any) {
 
   return (
     <>
-      <div className="relative mb-4 flex justify-center">
-        <SearchIcon className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
+      <div className="relative mb-4">
+        <SearchIcon className="absolute left-2 top-2 h-4 w-4 text-muted-foreground" />
         <Input
           placeholder="Search budgets..."
-          className="pl-8 w-auto"
+          className="pl-8 w-auto h-8"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
@@ -43,7 +51,19 @@ export default function SearchBudgets({ budgets }: any) {
                   <Badge variant="accentBlue">Rs {budget.BudgetAmount}</Badge>
                 </div>
                 <div className="flex items-center">
-                  <RxDotsVertical className="h-4 w-4 ml-2" />
+                  <DropdownMenu>
+                    <DropdownMenuTrigger>
+                      <RxDotsVertical className="h-4 w-4 ml-2" />
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                      <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem>Profile</DropdownMenuItem>
+                      <DropdownMenuItem>Billing</DropdownMenuItem>
+                      <DropdownMenuItem>Team</DropdownMenuItem>
+                      <DropdownMenuItem>Subscription</DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
                 </div>
               </CardTitle>
 
