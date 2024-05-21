@@ -86,67 +86,67 @@ export default async function page({ params: { ID } }: Params) {
   const budgetRemaining = calculatedBudgetRemaining["Remaining amount"];
 
   return (
-    <main className="">
-      <div className="flex justify-evenly mb-5">
-        <Card className="w-[300px]">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
-              Total spent
-            </CardTitle>
-            <Receipt className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">Rs {totalRecordAmount.toLocaleString()}</div>
-            <div className="text-xs text-muted-foreground">
-            <Badge variant={"customSuccessGreen"}>+20.1%</Badge> from last month
-            </div>
-          </CardContent>
-        </Card>
+    <main className="sm:px-6">
+  <div className="flex flex-col sm:flex-row justify-evenly mb-5">
+    <Card className="w-full sm:w-[300px] mb-4 sm:mb-0">
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+        <CardTitle className="text-sm font-medium">
+          Total spent
+        </CardTitle>
+        <Receipt className="h-4 w-4 text-muted-foreground" />
+      </CardHeader>
+      <CardContent>
+        <div className="text-2xl font-bold">Rs {totalRecordAmount.toLocaleString()}</div>
+        <div className="text-xs text-muted-foreground">
+          <Badge variant={"customSuccessGreen"}>+20.1%</Badge> from last month
+        </div>
+      </CardContent>
+    </Card>
 
-        <Card className="w-[300px]">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
-              Remaining budget
-            </CardTitle>
-            <Wallet className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">Rs {budgetRemaining.toLocaleString()}</div>
-            <div className="text-xs text-muted-foreground">
-             <Badge variant={"destructive"}>+19%</Badge> from last month
-            </div>
-          </CardContent>
-        </Card>
+    <Card className="w-full sm:w-[300px] mb-4 sm:mb-0">
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+        <CardTitle className="text-sm font-medium">
+          Remaining budget
+        </CardTitle>
+        <Wallet className="h-4 w-4 text-muted-foreground" />
+      </CardHeader>
+      <CardContent>
+        <div className="text-2xl font-bold">Rs {budgetRemaining.toLocaleString()}</div>
+        <div className="text-xs text-muted-foreground">
+          <Badge variant={"destructive"}>+19%</Badge> from last month
+        </div>
+      </CardContent>
+    </Card>
 
-        <Card className="w-[300px]">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
-              Remaining budget
-            </CardTitle>
-            <Wallet className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">Rs {budgetRemaining.toLocaleString()}</div>
-            <div className="text-xs text-muted-foreground">
-             <Badge variant={"destructive"}>+19%</Badge> from last month
-            </div>
-          </CardContent>
-        </Card>
-      </div>
+    <Card className="w-full sm:w-[300px]">
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+        <CardTitle className="text-sm font-medium">
+          Remaining budget
+        </CardTitle>
+        <Wallet className="h-4 w-4 text-muted-foreground" />
+      </CardHeader>
+      <CardContent>
+        <div className="text-2xl font-bold">Rs {budgetRemaining.toLocaleString()}</div>
+        <div className="text-xs text-muted-foreground">
+          <Badge variant={"destructive"}>+19%</Badge> from last month
+        </div>
+      </CardContent>
+    </Card>
+  </div>
 
-      <div className="flex justify-evenly gap-4">
-        <Card className="w-auto">
-          {/* passing data variables as props */}
-          <BudgetDetailsPieChart totalRecordAmount={totalRecordAmount} budgetRemaining={budgetRemaining}/>
-        </Card>
+  <div className="flex flex-col sm:flex-row justify-evenly gap-4">
+    <Card className="w-full sm:w-auto mb-4 sm:mb-0">
+      {/* passing data variables as props */}
+      <BudgetDetailsPieChart totalRecordAmount={totalRecordAmount} budgetRemaining={budgetRemaining}/>
+    </Card>
 
-        <Card>
-      <Table className="w-[400px]">
+    <Card className="w-full sm:w-[400px]">
+      <Table>
         <TableCaption>A list of your recent invoices.</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead className="text-center">Expense</TableHead>
-            <TableHead className="text-center">Cateogory</TableHead>
+            <TableHead className="text-center">Category</TableHead>
             {/* <TableHead className="text-right">Amount (LKR)</TableHead> */}
           </TableRow>
         </TableHeader>
@@ -162,23 +162,9 @@ export default async function page({ params: { ID } }: Params) {
           ))}
         </TableBody>
       </Table>
-      </Card>
+    </Card>
+  </div>
+</main>
 
-      </div>
-
-      {/* <h1>This is the total</h1>
-      <h2></h2>
-
-      <h1>Table thinamaboo</h1>
-      {relatedExpenseRecords.map((records: any) => (
-        <ul key={records.ID}>
-          <li>
-            {records.RelatedBudgetID}|{records.RelatedExpenseID}
-          </li>
-        </ul>
-      ))}
-
-      <h1>Remaining: </h1> */}
-    </main>
   );
 }

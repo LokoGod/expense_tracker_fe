@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
 import Margin_width_wrapper from "@/components/wrappers/margin_width_wrapper";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -16,7 +16,7 @@ import {
 import Footer from "@/components/Footer";
 import { Toaster, toast } from 'sonner'
 
-const inter = Inter({ subsets: ["latin"] });
+const lora = IBM_Plex_Sans({ subsets: ["latin"], weight: "500" });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -30,7 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning={true}>
-      <body className={inter.className} suppressHydrationWarning={true}>
+      <body className={lora.className} suppressHydrationWarning={true}>
         <Margin_width_wrapper>
           <TooltipProvider>
           <ThemeProvider
