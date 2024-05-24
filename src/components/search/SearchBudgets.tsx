@@ -100,7 +100,7 @@ export default function SearchBudgets({ budgets }: any) {
                         <DropdownMenuLabel>Budget</DropdownMenuLabel>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem asChild>
-                          <Link href={`../budgetDetails/${budget.ID}`}>
+                          <Link href={`/budgetDetails/${budget.ID}`}>
                             <View className="mr-2 h-4 w-4" />
                             <span>View more</span>
                           </Link>
@@ -127,7 +127,7 @@ export default function SearchBudgets({ budgets }: any) {
               <CardContent className="p-2 pt-0 md:p-4 md:pt-0">
                 <div className="flex justify-center">
                   <Button asChild className="w-full md:w-full">
-                    <Link href={`../budgetDetails/${budget.ID}`}>
+                    <Link href={`/budgetDetails/${budget.ID}`}>
                       Further Details
                     </Link>
                   </Button>
