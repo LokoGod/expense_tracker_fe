@@ -43,6 +43,8 @@ export default async function ExpenseRecords() {
           <TableCaption>A list of your expense records.</TableCaption>
           <TableHeader>
             <TableRow>
+            <TableHead>Date</TableHead>
+            <TableHead>Time</TableHead>
               <TableHead>Expense</TableHead>
               <TableHead>Budget</TableHead>
               <TableHead className="text-right">Amount (LKR)</TableHead>
@@ -51,6 +53,12 @@ export default async function ExpenseRecords() {
           <TableBody>
             {expenseRecordData.map((record: any) => (
               <TableRow key={record.ID}>
+                <TableCell>
+                  {record.CreatedAt.slice(0,10)}
+                </TableCell>
+                <TableCell>
+                  {record.CreatedAt.slice(11,19)}
+                </TableCell>
                 <TableCell className="font-medium">
                   {record.ExpenseTitle}
                 </TableCell>
