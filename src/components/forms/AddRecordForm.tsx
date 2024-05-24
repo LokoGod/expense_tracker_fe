@@ -32,7 +32,7 @@ const formSchema = z.object({
   Amount: z.coerce.number().positive({
     message: "Enter a positive number",
   }),
-  RelatedBudgetID: z.coerce.number().positive({
+  BudgetID: z.coerce.number().positive({
     message: "Please select a valid budget",
   }),
 });
@@ -128,7 +128,7 @@ export function AddRecordForm() {
               <div className="col-span-2">
                 <FormField
                   control={form.control}
-                  name="RelatedBudgetID"
+                  name="BudgetID"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Budget</FormLabel>

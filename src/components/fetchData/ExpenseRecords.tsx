@@ -55,9 +55,7 @@ export default async function ExpenseRecords() {
                   {record.ExpenseTitle}
                 </TableCell>
                 <TableCell>
-                  {record.RelatedBudget.map((budget: any) => (
-                    <div key={budget.ID}>{budget.Budget.BudgetTitle}</div>
-                  ))}
+                 {record.Budget.BudgetTitle}
                 </TableCell>
                 <TableCell className="text-right">
                   {record.Amount.toLocaleString()}
