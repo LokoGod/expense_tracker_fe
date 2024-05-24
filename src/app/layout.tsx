@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
 import Margin_width_wrapper from "@/components/wrappers/margin_width_wrapper";
 import { ThemeProvider } from "@/components/theme-provider";
 import Page_wrapper from "@/components/wrappers/page_wrapper";
 import Navbar from "@/components/NavBar";
 import SideBar from "@/components/SideBar";
-
 import {
   Tooltip,
   TooltipContent,
@@ -16,7 +15,7 @@ import {
 import Footer from "@/components/Footer";
 import { Toaster, toast } from 'sonner'
 
-const inter = Inter({ subsets: ["latin"] });
+const iBM_Plex_Sans = IBM_Plex_Sans({ subsets: ["latin"], weight: "500" });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -30,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning={true}>
-      <body className={inter.className} suppressHydrationWarning={true}>
+      <body className={iBM_Plex_Sans.className} suppressHydrationWarning={true}>
         <Margin_width_wrapper>
           <TooltipProvider>
           <ThemeProvider

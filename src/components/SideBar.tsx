@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import {
+  Archive,
   Banknote,
   ChevronLeft,
   ChevronRight,
@@ -99,14 +100,14 @@ export default function SideBar() {
           <Tooltip>
             <TooltipTrigger asChild>
               <Link
-                href="/orders"
+                href="/records"
                 className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
               >
-                <ShoppingCart className="h-5 w-5" />
-                <span className="sr-only">Orders</span>
+                <Archive className="h-5 w-5" />
+                <span className="sr-only">Records</span>
               </Link>
             </TooltipTrigger>
-            <TooltipContent side="right">Orders</TooltipContent>
+            <TooltipContent side="right">Records</TooltipContent>
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
@@ -198,11 +199,11 @@ export default function SideBar() {
                   Dashboard
                 </Link>
                 <Link
-                  href="#"
+                  href="/records"
                   className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
                 >
-                  <ShoppingCart className="h-5 w-5" />
-                  Orders
+                  <Archive className="h-5 w-5" />
+                  Records
                 </Link>
                 <Link
                   href="#"

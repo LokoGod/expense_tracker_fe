@@ -32,7 +32,9 @@ const formSchema = z.object({
   Amount: z.coerce.number().positive({
     message: "Enter a positive number",
   }),
-  Budget: z.string({ required_error: "Please select a budget" }),
+  RelatedBudgetID: z.coerce.number().positive({
+    message: "Please select a valid budget",
+  }),
 });
 
 interface Budget {
@@ -69,12 +71,13 @@ export function AddRecordForm() {
 
   async function onSubmit(values: z.infer<typeof formSchema>, event: any) {
     event.preventDefault();
-
+    console.log("Form data submitted:", values);
     try {
       const response = await axios.post(
         "http://localhost:5000/api/v1/expense",
         values
       );
+
       toast.success("Record Submit Success");
     } catch (error) {
       console.error();
@@ -125,14 +128,16 @@ export function AddRecordForm() {
               <div className="col-span-2">
                 <FormField
                   control={form.control}
-                  name="Budget"
+                  name="RelatedBudgetID"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Budget</FormLabel>
                       <FormControl>
                         <Select
-                          onValueChange={field.onChange}
-                          defaultValue={field.value}
+                          onValueChange={(value) =>
+                            field.onChange(parseInt(value))
+                          }
+                          defaultValue={field.value?.toString()}
                         >
                           <SelectTrigger className="">
                             <SelectValue placeholder="Choose" />
@@ -141,7 +146,7 @@ export function AddRecordForm() {
                             {budgetData.map((budget) => (
                               <SelectItem
                                 key={budget.ID}
-                                value={budget.BudgetTitle}
+                                value={budget.ID.toString()}
                               >
                                 {budget.BudgetTitle}
                               </SelectItem>
