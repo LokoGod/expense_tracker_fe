@@ -41,10 +41,6 @@ export default function Home() {
           </DialogContent>
         </Dialog>
       </div>
-
-      <div className="flex justify-center mt-5">
-      <ExpenseRecords />
-      </div>
     </main>
   );
 }

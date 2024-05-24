@@ -38,28 +38,34 @@ export default async function ExpenseRecords() {
 
   return (
     <div>
-        <Card>
-      <Table className="w-auto md:w-full">
-        <TableCaption>A list of your recent invoices.</TableCaption>
-        <TableHeader>
-          <TableRow>
-            <TableHead>Expense</TableHead>
-            <TableHead>Cateogory</TableHead>
-            <TableHead className="text-right">Amount (LKR)</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {expenseRecordData.slice(0, 5).map((record: any) => (
-            <TableRow key={record.ID}>
-              <TableCell className="font-medium">
-                {record.ExpenseTitle}
-              </TableCell>
-              <TableCell>{record.ExpenseCategoryID}</TableCell>
-              <TableCell className="text-right">{record.Amount}</TableCell>
+      <Card>
+        <Table className="w-auto md:w-full">
+          <TableCaption>A list of your expense records.</TableCaption>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Expense</TableHead>
+              <TableHead>Budget</TableHead>
+              <TableHead className="text-right">Amount (LKR)</TableHead>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+          </TableHeader>
+          <TableBody>
+            {expenseRecordData.map((record: any) => (
+              <TableRow key={record.ID}>
+                <TableCell className="font-medium">
+                  {record.ExpenseTitle}
+                </TableCell>
+                <TableCell>
+                  {record.RelatedBudget.map((budget: any) => (
+                    <div key={budget.ID}>{budget.Budget.BudgetTitle}</div>
+                  ))}
+                </TableCell>
+                <TableCell className="text-right">
+                  {record.Amount.toLocaleString()}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
       </Card>
     </div>
   );
