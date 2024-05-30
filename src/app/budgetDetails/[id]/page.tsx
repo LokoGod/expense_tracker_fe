@@ -46,7 +46,7 @@ export default async function page({ params: { ID } }: Params) {
 
   async function fetchAllBudgetRelatedExpenseRecords() {
     const response = await fetch(
-      `http://localhost:5000/api/v1/relatedExpenseRecord/${ID}`,
+      `http://4.145.113.172/relatedExpenseRecord/${ID}`,
       {
         cache: "no-cache",
       }
