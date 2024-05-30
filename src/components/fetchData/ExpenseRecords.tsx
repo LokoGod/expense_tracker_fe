@@ -21,7 +21,7 @@ import {
 import { toast } from "sonner";
 
 async function fetchExpenseRecords() {
-  const response = await fetch("http://4.145.113.172/expense", {
+  const response = await fetch("http://expense-back.pearlwavelabs.com/expense", {
     cache: "no-cache",
   });
 

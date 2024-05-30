@@ -2,7 +2,7 @@ import { toast } from "sonner";
 import SearchBudgets from "../search/SearchBudgets";
 
 async function fetchAllBudgets() {
-  const response = await fetch("http://4.145.113.172/budget", {
+  const response = await fetch("http://expense-back.pearlwavelabs.com/budget", {
     cache: "no-cache",
   });
 
