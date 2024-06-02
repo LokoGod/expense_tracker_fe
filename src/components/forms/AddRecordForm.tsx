@@ -77,8 +77,7 @@ export function AddRecordForm() {
     console.log("Form data submitted:", values);
     try {
       const response = await axios.post(
-        // "http://4.145.113.172/expense",
-        "http://localhost:5000/api/v1/expense", 
+        "http://localhost:5000/api/v1/expense",
         values
       );
 
