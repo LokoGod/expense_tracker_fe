@@ -50,7 +50,10 @@ export function AddRecordForm() {
   useEffect(() => {
     const fetchBudgets = async () => {
       try {
-        const response = await axios.get("http://4.145.113.172/budget");
+        const response = await axios.get(
+          // "http://4.145.113.172/budget"
+          "http://localhost:5000/api/v1/budget"
+        );
         const budgets = response.data["All Budgets"];
         setBudgetData(budgets);
         console.log(response);
@@ -74,7 +77,8 @@ export function AddRecordForm() {
     console.log("Form data submitted:", values);
     try {
       const response = await axios.post(
-        "http://4.145.113.172/expense",
+        // "http://4.145.113.172/expense",
+        "http://localhost:5000/api/v1/expense", 
         values
       );
 

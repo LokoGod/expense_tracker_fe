@@ -39,7 +39,8 @@ export default function SearchBudgets({ budgets }: any) {
 
   const handleDeleteJob = async (ID: number) => {
     try {
-      await axios.delete(`http://4.145.113.172/budget/${ID}`);
+      // await axios.delete(`http://4.145.113.172/budget/${ID}`);
+      await axios.delete(`http://localhost:5000/api/v1/budget/${ID}`);
       toast.success("Job deleted successfully");
       setTimeout(() => {
         window.location.reload();

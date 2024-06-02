@@ -21,7 +21,10 @@ import {
 import { toast } from "sonner";
 
 async function fetchExpenseRecords() {
-  const response = await fetch("http://4.145.113.172/expense", {
+  const response = await fetch(
+    // "http://4.145.113.172/expense",
+    "http://localhost:5000/api/v1/expense", 
+  {
     cache: "no-cache",
   });
 
