@@ -29,20 +29,20 @@ type Params = {
 };
 
 export default async function page({ params: { ID } }: Params) {
-  // async function fetchTotalRelatedRecordAmount() {
-  //   const response = await fetch(
-  //     `http://localhost:5000/api/v1/totalRelatedRecordAmount/${ID}`,
-  //     {
-  //       cache: "no-cache",
-  //     }
-  //   );
+  async function fetchTotalRelatedRecordAmount() {
+    const response = await fetch(
+      `http://localhost:5000/api/v1/totalRelatedRecordAmount/${ID}`,
+      {
+        cache: "no-cache",
+      }
+    );
 
-  //   if (!response.ok) {
-  //     console.log(Error);
-  //     toast.error("Failed to fetch budgets");
-  //   }
-  //   return response.json();
-  // }
+    if (!response.ok) {
+      console.log(Error);
+      toast.error("Failed to fetch budgets");
+    }
+    return response.json();
+  }
 
   async function fetchAllBudgetRelatedExpenseRecords() {
     const response = await fetch(
@@ -75,8 +75,8 @@ export default async function page({ params: { ID } }: Params) {
   //   return response.json();
   // }
 
-  // const totalRelatedRecordAmountData = await fetchTotalRelatedRecordAmount();
-  // const totalRecordAmount = totalRelatedRecordAmountData["Total"];
+  const totalRelatedRecordAmountData = await fetchTotalRelatedRecordAmount();
+  const totalRecordAmount = totalRelatedRecordAmountData["Total"];
 
   const allBudgetRelatedExpenseRecords =
     await fetchAllBudgetRelatedExpenseRecords();
@@ -89,7 +89,7 @@ export default async function page({ params: { ID } }: Params) {
   return (
     <main className="sm:px-6">
   <div className="flex flex-col sm:flex-row justify-evenly mb-5">
-    {/* <Card className="w-full sm:w-[300px] mb-4 sm:mb-0">
+    <Card className="w-full sm:w-[300px] mb-4 sm:mb-0">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
         <CardTitle className="text-sm font-medium">
           Total spent
@@ -102,7 +102,7 @@ export default async function page({ params: { ID } }: Params) {
           <Badge variant={"customSuccessGreen"}>+20.1%</Badge> from last month
         </div>
       </CardContent>
-    </Card> */}
+    </Card>
 
     {/* <Card className="w-full sm:w-[300px] mb-4 sm:mb-0">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -138,6 +138,7 @@ export default async function page({ params: { ID } }: Params) {
   <div className="flex flex-col sm:flex-row justify-evenly gap-4">
     <Card className="w-full sm:w-auto mb-4 sm:mb-0">
       {/* passing data variables as props */}
+
       {/* <BudgetDetailsPieChart totalRecordAmount={totalRecordAmount} budgetRemaining={budgetRemaining}/> */}
     </Card>
 
@@ -148,7 +149,7 @@ export default async function page({ params: { ID } }: Params) {
           <TableRow>
             <TableHead className="text-center">Expense</TableHead>
             <TableHead className="text-center">Category</TableHead>
-            {/* <TableHead className="text-right">Amount (LKR)</TableHead> */}
+            <TableHead className="text-right">Amount (LKR)</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody className="text-center">
@@ -158,7 +159,7 @@ export default async function page({ params: { ID } }: Params) {
                 {record.ExpenseTitle}
               </TableCell>
               <TableCell>{record.Amount}</TableCell>
-              {/* <TableCell className="text-right">{record.Amount}</TableCell> */}
+              <TableCell className="text-right">{record.Amount}</TableCell>
             </TableRow>
           ))}
         </TableBody>
