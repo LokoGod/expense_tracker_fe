@@ -24,14 +24,16 @@ import { Badge } from "@/components/ui/badge";
 
 type Params = {
   params: {
-    ID: string;
+    id: string;
   };
 };
 
-export default async function page({ params: { ID } }: Params) {
+export default async function page({ params: { id } }: Params) {
+  console.log("Recieved id:" ,id);
+  
   async function fetchTotalRelatedRecordAmount() {
     const response = await fetch(
-      `http://localhost:5000/api/v1/totalRelatedRecordAmount/${ID}`,
+      `http://localhost:5000/api/v1/totalRelatedRecordAmount/${id}`,
       {
         cache: "no-cache",
       }
@@ -47,7 +49,7 @@ export default async function page({ params: { ID } }: Params) {
   async function fetchAllBudgetRelatedExpenseRecords() {
     const response = await fetch(
       // `http://4.145.113.172/relatedExpenseRecord/${ID}`,
-      `http://localhost:5000/api/v1/relatedExpenseRecord/${ID}`,
+      `http://localhost:5000/api/v1/relatedExpenseRecord/${id}`,
       {
         cache: "no-cache",
       }
@@ -81,7 +83,7 @@ export default async function page({ params: { ID } }: Params) {
   const allBudgetRelatedExpenseRecords =
     await fetchAllBudgetRelatedExpenseRecords();
   const relatedExpenseRecords =
-    allBudgetRelatedExpenseRecords["All related records"];
+    allBudgetRelatedExpenseRecords["All related records"] || [];
 
   // const calculatedBudgetRemaining = await fetchCalBudgetRemaining();
   // const budgetRemaining = calculatedBudgetRemaining["Remaining amount"];
